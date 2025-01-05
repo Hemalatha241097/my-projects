@@ -10,7 +10,7 @@ N="\e[0m"
 
 TIME_STAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOGS_FOLDER="/var/log/expense-logs"
-LOG_FILE=$($0 | cut -d "." -f1 )
+LOG_FILE=$(echo $0 | cut -d "." -f1 )
 LOGS_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIME_STAMP.log"
 
 CHECK_USER(){
