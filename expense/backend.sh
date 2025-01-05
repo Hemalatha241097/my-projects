@@ -33,7 +33,6 @@ echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
 
 CHECK_USER
 
-
 dnf module disable nodejs -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Disabling current version of nodejs"
 
@@ -55,7 +54,7 @@ fi
 mkdir -p /app &>>$LOGS_FILE_NAME
 VALIDATE $? "creating app directory"
 
-curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGS_FILE_NAME
 VALIDATE $? "Downloading Backend"
 
 cd /app
