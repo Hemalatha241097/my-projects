@@ -46,7 +46,7 @@ mysql -h mysql.hemadevops.online -u root -pExpenseApp@1 -e 'show databases;' &>>
 
 if [ $? -ne 0 ]
 then
-    echo "Mysql root password is not setup" 
+    echo "Mysql root password is not setup" &>>$LOGS_FILE_NAME
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGS_FILE_NAME
     VALIDATE $? "Creating Root Password"
 
