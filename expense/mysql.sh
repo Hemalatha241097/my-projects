@@ -13,7 +13,7 @@ LOG_FILE=$(echo $0 | cut -d "." -f1)
 LOGS_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIME_STAMP.log"
 
 VALIDATE(){
-    if [ $? -ne 0]
+    if [ $? -ne 0 ]
     then
         echo -e "$2 is $R FAILURE $N"
     else
@@ -29,8 +29,8 @@ CHECK_USER(){
 
     if [ $USER_ID -ne 0 ]
         then
-        echo "ERROR:: You need to be sudo user to run the script"
-        exit 1
+            echo "ERROR:: You need to be sudo user to run the script"
+            exit 1
     fi   
 }
 
