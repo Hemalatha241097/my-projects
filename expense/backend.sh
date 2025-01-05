@@ -67,7 +67,7 @@ VALIDATE $? "Unzip backend"
 npm install &>>$LOGS_FILE_NAME
 VALIDATE $? "Installing dependencies"
 
-cp /home/ec2-user/my-projects/expense/backend.service /etc/systemd/system/
+cp /home/ec2-user/my-projects/expense/backend.service /etc/systemd/system/backend.service
 
 dnf install mysql -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Installing MySQL Client"
