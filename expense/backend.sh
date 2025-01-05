@@ -40,7 +40,7 @@ VALIDATE $? "Disabling current version of nodejs"
 dnf module enable nodejs:20 -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Enabling nodejs version 20"
 
-dnf install nodejs -y &>>$LOG_FILE_NAME
+dnf install nodejs -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Installing NodeJS"
 
 id expense &>>$LOGS_FILE_NAME
