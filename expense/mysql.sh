@@ -29,7 +29,7 @@ CHECK_USER(){
     fi   
 }
 
-echo "Script started running at $TIME_STAMP" &>>$LOG_FILE_NAME
+echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
 
 CHECK_USER
 
@@ -42,7 +42,7 @@ VALIDATE $? "Enabling mysqld service"
 systemctl start mysqld &>>LOGS_FILE_NAME
 VALIDATE $? "Starting mysqld service"
 
-mysql -h mysql.hemadevops.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
+mysql -h mysql.hemadevops.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOGS_FILE_NAME
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
 
