@@ -44,7 +44,14 @@ VALIDATE $? "Starting mysqld service"
 
 mysql -h mysql.hemadevops.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOGS_FILE_NAME
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
+if [ $? -ne 0 ]
+then
+    echo "Mysql root password is not setup" &>>$LOGS_FILE_NAME
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    VALIDATE $? "Creating Root Password"
 
+else
+    echo -e "mysql password already setup"...$Y SKIPPING $N"
+fi
 
 
