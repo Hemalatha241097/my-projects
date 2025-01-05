@@ -8,7 +8,7 @@ while true
 do
     read -p column1
     
-    if [ $content == exit ]
+    if [ ($column1 || $column2) == exit ]
         exit 1
     fi
     read -p column2
