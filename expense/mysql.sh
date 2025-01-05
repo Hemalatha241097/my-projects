@@ -36,10 +36,10 @@ CHECK_USER
 dnf install mysql-server -y &>>LOGS_FILE_NAME
 VALIDATE $? "Installing MySQL"
 
-systemctl enable mysqld
+systemctl enable mysqld &>>LOGS_FILE_NAME
 VALIDATE $? "Enabling mysqld service"
 
-systemctl start mysqld
+systemctl start mysqld &>>LOGS_FILE_NAME
 VALIDATE $? "Starting mysqld service"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
