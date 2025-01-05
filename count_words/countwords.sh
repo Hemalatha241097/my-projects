@@ -4,6 +4,6 @@
 
 text_file=$(read textfile)
 
-WORDS=$(echo $text_file | cut -d " " -f1)
+WORDS=$(cut -d " " -f1 $text_file)
 
 echo $WORDS
