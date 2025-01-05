@@ -21,18 +21,17 @@ VALIDATE(){
     fi
 }
 
-echo "Script started running at $TIME_STAMP"
-
-CHECK_USER
-
 CHECK_USER(){
-
     if [ $USER_ID -ne 0 ]
     then
         echo "ERROR:: You need to be sudo user to run the script"
         exit 1
     fi   
 }
+
+echo "Script started running at $TIME_STAMP"
+
+CHECK_USER
 
 dnf install mysql -y &>>LOGS_FILE_NAME
 VALIDATE $? "Installing MySQL"
