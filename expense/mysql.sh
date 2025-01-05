@@ -33,7 +33,7 @@ echo "Script started running at $TIME_STAMP"
 
 CHECK_USER
 
-dnf install mysql -y &>>LOGS_FILE_NAME
+dnf install mysql-server -y &>>LOGS_FILE_NAME
 VALIDATE $? "Installing MySQL"
 
 systemctl enable mysqld
