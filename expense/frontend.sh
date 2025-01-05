@@ -33,3 +33,30 @@ VALIDATE(){
     echo -e "$2...$R SUCCESS $N"
     fi
 }
+
+dnf install nginx -y  &>>$LOG$_FILE_NAME
+VALIDATE $? "Installing Nginx Server"
+
+systemctl enable nginx &>>$LOGS_FILE_NAME
+VALIDATE $? "Enabling Nginx server"
+
+systemctl start nginx &>>$LOGS_FILE_NAME
+VALIDATE $? "Starting Nginx Server"
+
+rm -rf /usr/share/nginx/html/* &>>$LOGS_FILE_NAME
+VALIDATE $? "Removing existing version of code"
+
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE_NAME
+VALIDATE $? "Downloading Latest code"
+
+cd /usr/share/nginx/html
+VALIDATE $? "Moving to HTML directory"
+
+unzip /tmp/frontend.zip &>>$LOGS_FILE_NAME
+VALIDATE $? "unzipping the frontend code"
+
+cp /home/ec2-user/my-projects/expense/expense.conf /etc/nginx/default.d/
+VALIDATE $? "Copied expense config"
+
+systemctl restart nginx &>>$LOG_FILE_NAME
+VALIDATE $? "Restarting nginx"
