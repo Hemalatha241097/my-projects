@@ -71,7 +71,7 @@ cp /home/ec2-user/my-projects/expense/backend.service /etc/systemd/system/backen
 dnf install mysql -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Installing MySQL Client"
 
-mysql -h mysql.hemadevops.online -uroot -pExpenseApp@1 </app/schema/backend.sql &>>$LOGS_FILE_NAME
+mysql -h mysql.hemadevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGS_FILE_NAME
 VALIDATE $? "setting up transactions schema and tables"
 
 systemctl daemon-reload &>>$LOGS_FILE_NAME

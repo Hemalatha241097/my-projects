@@ -13,10 +13,6 @@ LOGS_FOLDER="/var/log/expense-logs"
 LOG_FILE=$($0 | cut -d "." -f1 )
 LOGS_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIME_STAMP.log"
 
-echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
-
-CHECK_USER
-
 CHECK_USER(){
     if [ $USER_ID -ne 0 ]
     then
@@ -33,6 +29,10 @@ VALIDATE(){
     echo -e "$2...$R SUCCESS $N"
     fi
 }
+
+echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
+
+CHECK_USER
 
 dnf install nginx -y  &>>$LOG$_FILE_NAME
 VALIDATE $? "Installing Nginx Server"
