@@ -27,7 +27,7 @@ CHECK_USER
 
 CHECK_USER(){
 
-    if [ $USER_ID -ne 0]
+    if [ $USER_ID -ne 0 ]
         then
         echo "ERROR:: You need to be sudo user to run the script"
         exit 1
