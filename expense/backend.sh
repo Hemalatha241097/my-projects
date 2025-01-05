@@ -12,10 +12,6 @@ LOGS_FOLDER="/var/log/expense-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1 )
 LOGS_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIME_STAMP.log"
 
-echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
-
-CHECK_USER
-
 CHECK_USER(){
     if [ $USER_ID -ne 0 ]
     then
@@ -32,6 +28,11 @@ VALIDATE(){
         echo -e "$2...$G SUCCESS $N"
     fi
 }
+
+echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
+
+CHECK_USER
+
 
 dnf module disable nodejs -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Disabling current version of nodejs"
