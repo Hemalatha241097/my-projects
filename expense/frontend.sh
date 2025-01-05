@@ -34,7 +34,7 @@ echo "Script started running at $TIME_STAMP" &>>$LOGS_FILE_NAME
 
 CHECK_USER
 
-dnf install nginx -y  &>>$LOG$_FILE_NAME
+dnf install nginx -y  &>>$LOGS_FILE_NAME
 VALIDATE $? "Installing Nginx Server"
 
 systemctl enable nginx &>>$LOGS_FILE_NAME
